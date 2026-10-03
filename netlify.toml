@@ -1,6 +1,6 @@
 # Galapsy′ — mise en ligne sur Netlify (rien à régler à la main)
-# Le site est rangé dans les archives galapsy-*.zip : Netlify les décompresse,
-# ajoute config.js (connexion à la base partagée), puis publie le dossier « site ».
+# construire.py décompresse le site, écrit config.js et, si la base Supabase est
+# renseignée dans les variables d'environnement, l'installe ou la met à jour.
 [build]
-  command = "python3 -c \"import zipfile, glob, shutil; [zipfile.ZipFile(f).extractall('site') for f in sorted(glob.glob('galapsy-*.zip'))]; shutil.copy('config.js', 'site/config.js')\""
+  command = "python3 construire.py"
   publish = "site"
